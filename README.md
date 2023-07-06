@@ -1,4 +1,4 @@
-# BinusChat Project
+# Binus Chat Project
 Software Engineering
 
 Requirement :

@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binus Chat</title>
+    <link rel="stylesheet" href="public/stylechat.css">
+    <script src="public/scriptchat.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="server.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="leftSide">
+            
+            <!-- Header -->
+            <div class="header">
+                <div class="imgText">
+                    <div class="userimg">
+                        <img id="userImage" src="public/asset/user.jpg" alt="" class="cover">
+                      </div>
+                      <div>
+                    <h4 id="username">No Data</h4>
+                    <h4 id="nimspan">No Data</h4>
+                    </div>
+                    <script>
+                        const imgElement = document.getElementById('userImage');
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const Nama = urlParams.get('Nama');
+                        const NIM = urlParams.get('NIM');
+                        const imagepath = urlParams.get('imagepath');
+                        const Email = urlParams.get('Email')
+
+                        if (imagepath) {
+                        imgElement.src = imagepath;
+                        }
+                        const h4Element = document.getElementById("username");
+                        h4Element.innerText = `${Nama}`;
+                        const nimspan = document.getElementById("nimspan");
+                        nimspan.innerText = `${NIM}`;
+                    </script>
+                </div>
+                <ul class="nav_icons">
+                    <li id="contact" class="myBtn" onclick="openModal('start')"><ion-icon name="person-circle-sharp"></ion-icon></li>
+                    <li id="start" class="myBtn" onclick="openModal('contact')"><ion-icon name="add-sharp"></ion-icon></li>
+                    <li id="setting" class="myBtn" onclick="openModal('setting')"><ion-icon name="ellipsis-vertical"></ion-icon></li>
+                </ul>
+            </div>
+
+            <!-- Search Chat -->
+            <div class="search_chat">
+                <div>
+                    <input type="text" placeholder="Search">
+                    <ion-icon name="search-outline"></ion-icon> 
+                </div> 
+                <ion-icon name="filter-sharp"></ion-icon>              
+            </div>
+
+            <!-- CHAT LIST -->
+            <div class="chatlist">
+                <div class="block active">
+                    <div class="imgBox">
+                        <img src="public/asset/kristian.jpg" class="cover" alt="">
+                    </div>
+                    <div class="details">
+                        <div class="listHead">
+                            <h4>Kristian Hadinata</h4>
+                            <p class="time">12:18</p>
+                        </div>
+                        <div class="message_p">
+                            <p>Yooo...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="block unread">
+                    <div class="imgBox">
+                        <img src="public/asset/david.jpg" class="cover" alt="">
+                    </div>
+                    <div class="details">
+                        <div class="listHead">
+                            <h4>David Samuel</h4>
+                            <p class="time">12:34</p>
+                        </div>
+                        <div class="message_p">
+                            <p>Do you like Avanza ?</p>
+                            <b>1</b>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="block unread">
+                    <div class="imgBox">
+                        <img src="public/asset/feivel.jpg" class="cover" alt="">
+                    </div>
+                    <div class="details">
+                        <div class="listHead">
+                            <h4>Feivel Gunawan</h4>
+                            <p class="time">Yesterday</p>
+                        </div>
+                        <div class="message_p">
+                            <p>Have you done your assignment ?</p>
+                            <b>2</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="imgBox">
+                        <img src="public/asset/bob.jpg" class="cover" alt="">
+                    </div>
+                    <div class="details">
+                        <div class="listHead">
+                            <h4>Bob Wijaya</h4>
+                            <p class="time">Yesterday</p>
+                        </div>
+                        <div class="message_p">
+                            <p>When do you want group work ?</p>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="imgBox">
+                        <img src="public/asset/justin.jpg" class="cover" alt="">
+                    </div>
+                    <div class="details">
+                        <div class="listHead">
+                            <h4>Justin Jefferson</h4>
+                            <p class="time">18/01/2022</p>
+                        </div>
+                        <div class="message_p">
+                            <p>Bolehhhhh.....</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="imgBox">
+                        <img src="public/asset/perdi.jpg" class="cover" alt="">
+                    </div>
+                    <div class="details">
+                        <div class="listHead">
+                            <h4>Perdianto Tanuwijaya</h4>
+                            <p class="time">17/01/2022</p>
+                        </div>
+                        <div class="message_p">
+                            <p>Sttt... No Satu</p> 
+                        </div>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="imgBox">
+                        <img src="public/asset/chris.jpg" class="cover" alt="">
+                    </div>
+                    <div class="details">
+                        <div class="listHead">
+                            <h4>Christopher Soelianto</h4>
+                            <p class="time">15/01/2022</p>
+                        </div>
+                        <div class="message_p">
+                            <p>How are you bro ?</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="imgBox">
+                        <img src="public/asset/hansel.jpg" class="cover" alt="">
+                    </div>
+                    <div class="details">
+                        <div class="listHead">
+                            <h4>Hansel Christian Linuwih</h4>
+                            <p class="time">Yesterday</p>
+                        </div>
+                        <div class="message_p">
+                            <p>Do you understand C language ?</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="imgBox">
+                        <img src="public/asset/binuslogo1.png" class="cover" alt="">
+                    </div>
+                    <div class="details">
+                        <div class="listHead">
+                            <h4>Binus University</h4>
+                            <p class="time">18/01/2022</p>
+                        </div>
+                        <div class="message_p">
+                            <p>Can i help you ?</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="imgBox">
+                        <img src="" class="cover" alt="">
+                    </div>
+                    <div class="details">
+                        <div class="listHead">
+                            <h4></h4>
+                            <p class="time"></p>
+                        </div>
+                        <div class="message_p">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="imgBox">
+                        <img src="" class="cover" alt="">
+                    </div>
+                    <div class="details">
+                        <div class="listHead">
+                            <h4></h4>
+                            <p class="time"></p>
+                        </div>
+                        <div class="message_p">
+                            <p></p> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rightSide">
+            <div class="header">
+                <div class="imgText">
+                    <div class="userimg">
+                        <button id="freind-profile" class="myBtn" onclick="openModal('freind-profile')"><img src="public/asset/kristian.jpg" alt="" class="cover"></button>
+                    </div>
+                    <h4>Kristian Hadinata<br><span>Online</span></h4>
+                </div>
+                <ul class="nav_icons">
+                    <li><ion-icon name="search-outline"></ion-icon></li>
+                    <li><ion-icon name="ellipsis-vertical"></ion-icon></li>
+                </ul>
+            </div>
+
+            <!-- CHAT-BOX -->
+            <div class="chatbox">
+                <div class="message friend_msg">
+                    <div class="userimg">
+                        <img src="public/asset/kristian.jpg" alt="" class="cover">
+                    </div>
+                    <div class="na">
+                        <h4>Kristian Hadinata</h4> 
+                        <p>Yooo...<br><span>11:40 AM</span></p>
+                    </div>
+                </div>
+                 <div class="message my_msg">
+                    <div class="na" id="na-left">
+                        <h4 id="username2">No Data<br></h4>
+                        <p>Hi <br><span>11:40 AM</span></p>
+                        <script>
+                            const usernameElement = document.getElementById('username2');
+                            usernameElement.innerText = Nama;
+
+                            fetch('/messages')
+                                .then(response => response.json())
+                                .then(data => {
+                                    const chatboxElement = document.querySelector('.chatbox');
+                                    data.forEach(message => {
+                                        const {senderid, messagesend, created_at , imagepath} = message;
+                                        const createdAtDate = new Date(created_at);
+                                        const createdAtTime = createdAtDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                                        const messageElement = document.createElement('div');
+                                        messageElement.classList.add('message');
+                                        messageElement.innerHTML = `
+                                        <div class="message my_msg">
+                                            <div class="na" id="na-left">
+                                                <h4 id="username2" >${senderid === NIM ? Nama : senderid}</h4>
+                                                <p>${messagesend}<br><span>${createdAtTime}</span></p>
+                                            </div>
+                                            <div class="userimg">
+                                                <img id="userImage3" src="public/asset/nicho.jpg" alt="" class="cover">
+                                            </div>
+                                        </div>
+                                            `;
+                                        chatboxElement.appendChild(messageElement);
+                                        });
+                                    })
+                                    .catch(error => {
+                                        console.error('Error:', error);
+                                    });
+                        </script>
+                    </div>
+                    <div class="userimg">
+                        <img id="userImage2" src="public/asset/user.jpg" alt="" class="cover">
+                    </div>
+                    <script>
+                        const imgElement2 = document.getElementById('userImage2');
+                        
+                        if (imagepath) {
+                        imgElement2.src = imagepath;
+                        }
+                            
+                        const h4Element2 = document.getElementById("username2");
+                        h4Element2.innerText = `${Nama}`;
+                    </script> 
+                </div>
+            </div>
+            
+            <!-- CHAT INPUT -->
+            <div class="chat_input">
+                <ion-icon name="happy-outline"></ion-icon>
+                <ion-icon name="link-sharp"></ion-icon>
+                    <input type="text" placeholder="Message" id="chatInput">
+                    <button onclick="sendMessage()"><ion-icon name="send"></ion-icon></button>
+                    <script>
+                        function sendMessage() {
+                            const chatInput = document.getElementById('chatInput');
+                            const message = chatInput.value.trim();
+                            const senderId = NIM;
+                            const receiverId = '2567454221';
+                            
+
+                            if (message !== '') {
+                                sendDataToServer(message, senderId, receiverId);
+                                clearInput();
+                                refreshPage();
+                            }
+                        }
+
+                        function clearInput() {
+                            const chatInput = document.getElementById('chatInput');
+                            chatInput.value = '';
+                        }
+
+                    function refreshPage() {
+                        location.reload();
+                    }
+
+                    function sendDataToServer(message, senderId, receiverId) {
+                        const data = {
+                            message: message,
+                            senderId: senderId,
+                            receiverId: receiverId
+                        };
+
+                    fetch('/send-message', {
+                        method: 'POST',
+                        headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                    })
+                    .catch(error => {
+                    console.error('Error sending message:', error);
+                    });
+                }
+                </script>               
+                <ion-icon name="mic"></ion-icon>
+            </div>
+        </div>
+    </div>
+
+    <div id="freind-profile" class="myModal modal-box"> 
+        <div class="modal-content">
+            <div class="close">
+                <button class="x-button">
+                    <img src="public/asset/X Icon.png">
+                </button>
+            </div>
+            <div class="profpic">
+                <img src="public/asset/kristian.jpg" class="ppimg">
+            </div>
+            <div class="contact-profile-name">
+                <h1>Kristian Hadinata</h1>
+            </div>
+            <div class="contact-info">
+                <h2>2540132572</h2>
+                <h2>kristian.hadinata@binus.ac.id</h2>
+            </div>
+            <div class="buttons">
+                <button>
+                    <img src="public/asset/Trash.png">
+                    Delete Contact
+                </button>
+            </div>   
+        </div>
+    </div>
+    <div id="contact" class="myModal modal-box">
+        <div class="modal-content">
+            <div class="close">
+                <button class="x-button">
+                    <img src="public/asset/X Icon.png">
+                </button>
+            </div>
+        </div>
+        <div class="button-box">
+            <div id="tombol"></div>
+            <button type="button" class="toggle-button" onclick="left()">Find Contact</button>
+            <button type="button" class="toggle-button" onclick="right()">Request</button>
+        </div>
+        <hr id="contact-line">
+
+        <div id="left" class="input-group">
+            <div class="search_chat">
+                <div class="search_chat_find_contact">
+                    <input id="searchInput" type="text" placeholder="Search by NIM or Email">
+                                  
+                </div>
+            </div>
+
+            <div id="left-accept-request" class="accept-request">
+                <div class="imgText">
+                    <div class="userimg">
+                        <div class="searchuserimg">
+                            <button id="myBtn"><img src="public/asset/transparantimg.png" alt="" class="cover"></button>
+                        </div>
+                    </div>
+                    <h4 id="usernamescr"><br><span></span></h4>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const searchInput = document.getElementById('searchInput');
+                            const usernamescr = document.getElementById('usernamescr');
+                            const userImg = document.querySelector('.searchuserimg img');
+                            const iconHider = document.querySelector('.iconhider');
+                            const userimgHider = document.querySelector('.searchuserimg');
+
+                            searchInput.addEventListener('input', function() {
+                            const searchText = searchInput.value.trim();
+                            if (searchText !== '') {
+                                sendDataToServer(searchText);
+                                iconHider.style.display = 'block';
+                                userimgHider.style.display = 'block';
+  
+                            } else {
+                                usernamescr.innerText = '';
+                                userImg.src = 'public/asset/transparantimg.png';
+                                iconHider.style.display = 'none';
+                                userimgHider.style.display = 'none';
+
+                            }
+                        });
+
+                            function sendDataToServer(searchText) {
+                            fetch(`/search?searchText=${encodeURIComponent(searchText)}`)
+                                .then(response => response.json())
+                                .then(data => {
+                                if (data.length > 0) {
+                                    const firstResult = data[0];
+                                    const { Nama, NIM, imagepath } = firstResult;
+                                    usernamescr.innerText = `${Nama}\n${NIM}`;
+                                    userImg.src = imagepath;
+                                    iconHider.style.display = 'block';
+                                    userimgHider.style.display = 'block';
+
+                                } else {
+                                    usernamescr.innerText = '';
+                                    iconHider.style.display = 'none';
+                                    userimgHider.style.display = 'none';
+                                }
+                            })
+                            .catch(error => {
+                            console.error('Error executing search request:', error);
+                            });
+                        }
+                    });
+                </script>       
+                
+                </div>
+                <ul class="nav_icons">
+                    <div class="iconhider">
+                      <li><ion-icon name="add-outline"></ion-icon></li>
+                    </div>
+                  </ul>                  
+            </div>
+        </div>
+        <div id="right" class="input-group">
+            <div class="accept-request">
+                <div class="imgText" id="imgText-id">
+                    <div class="userimg">
+                        <button id="myBtn"><img src="public/asset/kristian.jpg" alt="" class="cover"></button>
+                    </div>
+                    <h4>Kristian Hadinata<br><span>2540132572</span></h4>
+                </div>
+                <ul class="nav_icons">
+                    <li id="check"><ion-icon name="checkmark-outline"></ion-icon></li>
+                    <li id="reject"><ion-icon name="close-outline"></ion-icon></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    <div id="setting" class="myModal modal-box">
+        <div class="setting-content">
+            
+            <div>
+                <ul id="setting-options" class="myBtn" onclick="openModal('setting-options')"><a href="#">Setting</a></ul>
+                <hr class="setting-divider">
+                <ul><a href="http://localhost:3000/">Logout</a></ul>
+            </div>
+            <div class="close">
+                
+            </div> 
+        </div>
+    </div> 
+
+    <div id="setting-options" class="myModal modal-box">
+        <div class="modal-content">
+            <div class="close">
+                <button class="x-button">
+                    <img src="public/asset/X Icon.png">
+                </button>
+            </div> 
+            <div>
+                <p class="Setting-Options-title">Settings</p>
+            </div>
+        
+            <div id="profile-button" class="buttons">
+                <button div id="profile-setting" class="myBtn" onclick="openModal('profile-setting')">
+                    <img src="public/asset/Profile Icon.png">
+                    Profile
+                </button>
+            </div> 
+            <div id="support-button" class="buttons">
+                <button div id="support-options" class="myBtn" onclick="openModal('support-options')">
+                    <img src="public/asset/Support Icon.png">
+                    Support
+                </button>
+            </div> 
+        </div>
+    </div>
+        
+        <div id="profile-setting" class="myModal modal-box"> 
+            <div class="modal-content">
+                <div class="close">
+                    <button class="x-button" id="close-button-profile-setting">
+                        <img src="public/asset/X Icon.png">
+                    </button>
+                </div>
+                <div class="profile-setting-title">
+                    <p class="Setting-Options-title">Profile</p>
+                </div>
+            </div>
+                <div class="profile-setting-content">
+                    <h3>Name</h3>
+                    <h2 id="usernameh2">No Data</h2>
+                    <br>
+                    <h3>NIM</h3>
+                    <h2 id="nim2">No Data</h2>
+                    <br>
+                    <h3>Binusian Email</h3>
+                    <h2 id="email2">No Data</h2>
+                    <script>
+                        const h2Element1 = document.getElementById("usernameh2");
+                        h2Element1.innerText = `${Nama}`;
+                        const h2Element2 = document.getElementById("nim2")
+                        h2Element2.innerText = `${NIM}`;
+                        const h2Element3 = document.getElementById("email2");
+                        h2Element3.innerText = `${Email}`;
+                    </script>
+                </div>
+                <br>
+                <div class="modal-content">
+                    <div class="buttons">
+                        <button>
+                            <img src="public/asset/Reset Icon.png">
+                            Reset Password
+                        </button>
+                    </div>  
+                </div>
+            </div>
+        </div>
+        <div id="support-options" class="myModal modal-box">
+            <div class="modal-content">
+                <div class="close">
+                    <button class="x-button" id="close-button-support-setting">
+                        <img src="public/asset/X Icon.png">
+                    </button>
+                </div> 
+                <div>
+                    <p class="Setting-Options-title">Support</p>
+                </div>
+            
+                <div id="profile-button" class="buttons">
+                    <button>
+                        <img src="public/asset/Report bug icon.png">
+                        Report bug
+                    </button>
+                </div> 
+                <div id="support-button" class="buttons">
+                    <button>
+                        <img src="public/asset/Contact us icon.png">
+                        Contact us
+                    </button>
+                </div> 
+            </div>
+        </div>
+        <div id="start" class="myModal modal-box"> 
+            <div class="modal-content">
+                <div id="new_chat" class="close">
+                    <button class="x-button">
+                        <img src="public/asset/X Icon.png">
+                    </button>
+                </div>
+                <div>
+                    <p class="Setting-Options-title">New Chat</p>
+                </div>
+                <div class="search_chat">
+                    <div>
+                        <input type="text" placeholder="Search Contact">
+                    </div>               
+                </div>
+                <div class="wrapper-button-new-chat"></div>
+                <div class="buttons">
+                    <button>
+                        <img src="public/asset/Group Icon.png">
+                        Create Group
+                    </button>
+                </div>   
+                <hr class="setting-divider">
+                <div class="accept-request">
+                    <div class="imgText">
+                        <div class="userimg">
+                            <button id="myBtn"><img src="public/asset/kristian.jpg" alt="" class="cover"></button>
+                        </div>
+                        <h4>Kristian Hadinata<br><span>2540132572</span></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var a = document.getElementById("left")
+        var b = document.getElementById("right")
+        var c = document.getElementById("tombol")
+        function right(){
+            a.style.left = "-420px";
+            b.style.left = "20px";
+            c.style.left = "140px"
+        }
+        function left(){
+            a.style.left = "10px";
+            b.style.left = "450px";
+            c.style.left = "12px"
+        }
+    </script>
+    <script>
+    var spans = document.getElementsByClassName("close");
+    for (var i = 0; i < spans.length; i++) {
+    spans[i].onclick = function() {
+        for (var index in modals) {
+        if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";    
+        }
+    }
+    }
+
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) {
+        for (var index in modals) {
+        if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";    
+        }
+        }
+    }
+    </script>
+</body>
+</html>
